@@ -18,7 +18,6 @@ class CreateOrdersTable extends Migration
             $table->integer('customer_id');
             $table->integer('branch_id');
             $table->date('date');
-            $table->integer('amount');
             $table->timestamps();
         });
     }
