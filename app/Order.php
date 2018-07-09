@@ -13,4 +13,8 @@ class Order extends Model
     	return $this->belongsToMany('App\Product')->withTimestamps();
   	}
 
+  	public function branch() {
+    	return $this->belongsTo('App\Branch');
+	}
+
 }
