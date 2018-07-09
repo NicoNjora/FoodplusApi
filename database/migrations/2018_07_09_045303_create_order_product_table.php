@@ -16,16 +16,14 @@ class CreateOrderProductTable extends Migration
         Schema::create('order_product', function (Blueprint $table) {
 
             $table->integer('order_id')->unsigned()->nullable();
+            $table->integer('product_id')->unsigned()->nullable();
+            $table->integer('quantity');
+            $table->timestamps();
+
             $table->foreign('order_id')->references('id')
             ->on('orders')->onDelete('cascade');
-
-            $table->integer('product_id')->unsigned()->nullable();
-             $table->foreign('product_id')->references('id')
+            $table->foreign('product_id')->references('id')
             ->on('products')->onDelete('cascade');
-
-            $table->integer('quantity');
-
-            $table->timestamps();
         });
     }
 
