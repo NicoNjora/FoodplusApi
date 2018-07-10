@@ -17,4 +17,10 @@ class Branch extends Model
 		return $this->hasMany('App\Order');
 
 	}
+
+	public function messenger(){
+
+		return $this->hasMany('App\Messenger');
+
+	}
 }
