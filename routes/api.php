@@ -21,4 +21,32 @@ use Illuminate\Http\Request;
     Route::post('/login', 'UserController@login');
     Route::post('/register', 'UserController@register');
 
-    Route::post('/messengerlogin', 'MessengerController@login');
+
+    Route::group(['prefix' => 'messenger'], function (){
+
+        Route::post('/login', 'MessengerController@login');
+        Route::post('/add', 'MessengerController@add');
+    });
+
+    Route::group(['prefix' => 'branch'], function (){
+
+    	Route::get('/', 'BranchController@index');
+		Route::post('/add', 'BranchController@add');
+
+	});
+
+	Route::group(['prefix' => 'product'], function (){
+
+    	Route::get('/', 'ProductController@index');
+    	Route::get('/show', 'ProductController@show');
+		Route::post('/add', 'ProductController@add');
+
+	});
+
+	Route::group(['prefix' => 'order'], function (){
+
+    	Route::get('/', 'OrderController@index');
+		Route::post('/add', 'ProductController@add');
+
+	});
+
