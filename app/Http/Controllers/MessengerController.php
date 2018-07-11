@@ -78,16 +78,7 @@ class MessengerController extends Controller
         $password = $request['password'];
         $messenger = Messenger::where('email', $email)->firstOrFail();
         if(Hash::check($password, $messenger->password)){
-<<<<<<< HEAD
 
-=======
-//             return new MessengerResource($messenger);
-//             return "Login";
-            
-//              $status = 200;
-//             return response()->json(new MessengerResource($messenger),$status);
-            
->>>>>>> master
             $this->content['user'] = new MessengerResource($messenger);
             $status = 200;
             return response()->json($this->content, $status);
@@ -98,28 +89,5 @@ class MessengerController extends Controller
         }
         return response()->json($this->content, $status);    
     }
-
-    // public function add(Request $request) 
-    // { 
-    //     $validator = Validator::make($request->all(), [ 
-    //         'name' => 'required',
-    //         'contacts' => 'required',
-    //         'branch_id' => 'required',  
-    //         'email' => 'required|email', 
-    //         'password' => 'required', 
-    //         'c_password' => 'required|same:password',
-    //     ]);
-    //     if ($validator->fails()) { 
-    //         return response()->json(['error'=>$validator->errors()], 401);            
-    //     }
-
-    //     $input = $request->all(); 
-    //     $input['password'] = bcrypt($input['password']); 
-    //     $messenger = Messenger::create($input); 
-    //     $success['token'] =  $messenger->createToken('FoodplusMessenger')-> accessToken; 
-    //     $success['name'] =  $messenger->name;
-    //     $success['branch_id'] =  $messenger->branch_id;
-
-    //     return response()->json(['success'=>$success], $this-> successStatus); 
-    // }
 }
+
