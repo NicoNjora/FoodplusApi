@@ -81,8 +81,12 @@ class MessengerController extends Controller
 //             return new MessengerResource($messenger);
 //             return "Login";
             
-             $status = 200;
-            return response()->json(new MessengerResource($messenger),$status);
+//              $status = 200;
+//             return response()->json(new MessengerResource($messenger),$status);
+            
+            $this->content['user'] = new MessengerResource($messenger);
+            $status = 200;
+            return response()->json($this->content, $status);
         }
         else{
             $this->content['error'] = "Unauthorised";
