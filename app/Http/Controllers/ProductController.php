@@ -11,6 +11,11 @@ class ProductController extends Controller
 {
     //
 
+    public function new()
+    {
+        return view('/product');
+    }
+
     public function show(Product $product)
     {
         //

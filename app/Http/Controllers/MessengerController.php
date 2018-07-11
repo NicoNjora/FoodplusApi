@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Hash;
 class MessengerController extends Controller
 {
     //
+    public function new()
+    {
+        return view('/messenger');
+    }
 
     public function index(){
         

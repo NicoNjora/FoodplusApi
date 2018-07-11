@@ -17,6 +17,7 @@ class CreateMessengersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->integer('contacts')->unique();
             $table->string('password');
             $table->integer('branch_id')->unsigned();
             $table->timestamps();

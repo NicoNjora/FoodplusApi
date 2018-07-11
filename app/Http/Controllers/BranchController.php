@@ -11,6 +11,11 @@ class BranchController extends Controller
 {
     //
 
+    public function new()
+    {
+        return view('/branch');
+    }
+
     public function add(Request $request)
     {
 
