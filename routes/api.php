@@ -46,7 +46,7 @@ use Illuminate\Http\Request;
 	Route::group(['prefix' => 'order'], function (){
 
     	Route::get('/', 'OrderController@index');
-		Route::post('/add', 'ProductController@add');
+		Route::post('/add', 'OrderProductController@add');
 
 	});
 

@@ -16,40 +16,37 @@ class UserController extends Controller
         $this->content = array();
     }
 
-    public function login(){
-        if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
-		        $user = Auth::user();
-		        $this->content['token'] =  $user->createToken('Foodplus')->accessToken;
-		        $status = 200;
-    	}
-	    else{
-	        $this->content['error'] = "Unauthorised";
-	        $status = 401;
-	    }
-     	return response()->json($this->content, $status);    
+     public function login(Request $request){
+
+        $email = $request['email'];
+        $password = $request['password'];
+        $messenger = Messenger::where('email', $email)->firstOrFail();
+        if(Hash::check($password, $messenger->password)){
+
+            $this->content['user'] = new MessengerResource($messenger);
+            $status = 200;
+            return response()->json($this->content, $status);
+        }
+        else{
+            $this->content['error'] = "Unauthorised";
+            $status = 401;
+        }
+        return response()->json($this->content, $status);    
     }
 
     public function register(Request $request) 
     { 
-        $validator = Validator::make($request->all(), [ 
-            'name' => 'required', 
-            'email' => 'required|email', 
-            'password' => 'required', 
-            'c_password' => 'required|same:password', 
-        ]);
-		if ($validator->fails()) { 
-            return response()->json(['error'=>$validator->errors()], 401);            
-        }
+       $name = $request['name'];
+        $email = $request['email'];
+        $password = $request['password'];
+        $user = new User();
+        $user->name = $name;
+        $user->email = $email;
 
-		$input = $request->all(); 
-        $input['password'] = bcrypt($input['password']); 
-        $user = User::create($input); 
-        $success['token'] =  $user->createToken('Foodplus')-> accessToken; 
-	    $success['name'] =  $user->name;
-
-		return response()->json(['success'=>$success], $this-> successStatus); 
+        $user->password = Hash::make($password);
+        $user->save();
     }
-	/** 
+    /** 
      * details api 
      * 
      * @return \Illuminate\Http\Response 

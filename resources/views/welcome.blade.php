@@ -30,7 +30,7 @@
 
     <div class="content">
         <div class="title m-b-md">
-            Android $ Internet Programming Project <br>
+            Android & Internet Programming Project <br>
             Managers Module
         </div>
 

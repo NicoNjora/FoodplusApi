@@ -78,7 +78,10 @@ class MessengerController extends Controller
         $password = $request['password'];
         $messenger = Messenger::where('email', $email)->firstOrFail();
         if(Hash::check($password, $messenger->password)){
-            return new MessengerResource($messenger);
+
+            $this->content['user'] = new MessengerResource($messenger);
+            $status = 200;
+            return response()->json($this->content, $status);
         }
         else{
             $this->content['error'] = "Unauthorised";
