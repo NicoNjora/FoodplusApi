@@ -42,6 +42,8 @@
             <a href="/product/new">Add a new product</a>
             <a href="/messenger/new">Add a new Messenger</a>
         </div>
+
+        <a href="/logout">Logout</a>
     </div>
 
 </body>

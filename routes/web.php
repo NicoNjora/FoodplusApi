@@ -20,10 +20,15 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::get('/logout', function () {
+    return view('login');
+});
+
 
 Route::get('/branch/new','BranchController@new');
 Route::get('/product/new','ProductController@new');
 Route::get('/messenger/new','MessengerController@new');
+
 
 Route::post('/branch/add','BranchController@add');
 Route::post('/messenger/add','MessengerController@add');
