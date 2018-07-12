@@ -12,8 +12,14 @@
 */
 
 Route::get('/', function () {
+    return view('login');
+});
+
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
 
 Route::get('/branch/new','BranchController@new');
 Route::get('/product/new','ProductController@new');
@@ -21,6 +27,7 @@ Route::get('/messenger/new','MessengerController@new');
 
 Route::post('/branch/add','BranchController@add');
 Route::post('/messenger/add','MessengerController@add');
+Route::post('/login','MessengerController@start');
 
 Route::post('/product/add','ProductController@add');
 

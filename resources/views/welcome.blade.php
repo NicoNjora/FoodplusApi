@@ -21,17 +21,20 @@
                 text-align: center;
             }
 
-        .title {
+        h1 {
             font-size: 64px;
+        }
+        h3 {
+            font-size: 32px;
         }
     </style>
 </head>
 <body>
 
     <div class="content">
-        <div class="title m-b-md">
-            Android & Internet Programming Project <br>
-            Managers Module
+        <div class="m-b-md">
+            <h1>Welcome To the Managers Module</h1> <br>
+            <h3> Here a manager can manage the shops operations</h3>
         </div>
 
         <div class="links">

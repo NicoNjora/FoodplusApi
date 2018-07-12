@@ -45,6 +45,7 @@ class UserController extends Controller
 
         $user->password = Hash::make($password);
         $user->save();
+        return "successful";
     }
     /** 
      * details api 

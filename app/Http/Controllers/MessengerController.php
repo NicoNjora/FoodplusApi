@@ -89,5 +89,20 @@ class MessengerController extends Controller
         }
         return response()->json($this->content, $status);    
     }
+
+    public function start(Request $request){
+        $email = $request['email'];
+        $password = $request['password'];
+        $messenger = Messenger::where('email', $email)->firstOrFail();
+        if(Hash::check($password, $messenger->password)){
+
+            return view('/welcome');
+        }
+        else{
+            $this->content['error'] = "Unauthorised";
+            $status = 401;
+            return response()->json($this->content, $status); 
+        }
+    }
 }
 
